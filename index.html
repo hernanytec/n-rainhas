@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Problema das N rainhas</title>
+</head>
+
+<body>
+    <div id="cabeçalho">
+        <h1>Problema das N rainhas</h1>
+        <h2> N = <input id="inputN" size="1" type="number" value="8"> </h2>
+        <button id="buscar" onclick="startSearch()">Começar a busca</button>
+        
+        <div id="controls">
+            <div>
+                <input type="radio" name="busca" value="dfs" checked>Busca em Profundidade<br>
+                <input type="radio" name="busca" value="bfs">Busca em Largura<br>
+            </div>
+
+            <div>
+                <input type="radio" name="exibicao" value="1" checked>Exibir apenas um estado objetivo<br>
+                <input type="radio" name="exibicao" value="2">Exibir todos os estados objetivo<br>
+                <input type="radio" name="exibicao" value="3">Exibir um caminho para um estado objetivo<br>
+                <input type="radio" name="exibicao" value="4">Exibir todo espaço de busca<br>
+            </div>
+        </div>
+
+        <span id="infoTime" ></span>
+        <span id="infoCont" ></span>
+    </div>
+
+    <div id="arvore">
+    </div>
+</body>
+
+<script src="busca.js" ></script>
+<script src="exibicao.js"></script>
+</html>
