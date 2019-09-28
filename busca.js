@@ -7,7 +7,7 @@
  * k + state[k] == i+j (ou subtituindo '+' por '-') verifica se há outra rainha em alguma das diagonais
  *  
  */
-isValid = (state, i, j) => {
+const isValid = (state, i, j) => {
 
     for (let k = 0; k < state.length; k++) {
         if(state[k] != null){
@@ -24,7 +24,7 @@ isValid = (state, i, j) => {
  * pego um estado antigo e crio um novo estado adicionando uma rainha na coluna i e linha j
  * o novo estado é filho do estado antigo o que por consequência lhe dá um nível a mais na árvore
  */
-makeState = (state, i, j) =>{
+const makeState = (state, i, j) =>{
     let ns = JSON.parse(JSON.stringify(state))//faço uma cópia para não alterar o valor do antigo estado
     
     if(i === state.arr.length-1)//se estiver colocando uma rainha na última coluna então é um estado objetivo
@@ -37,7 +37,7 @@ makeState = (state, i, j) =>{
 }
 
 
-bfs = (initialState, tipoExibicao) =>{
+const bfs = (initialState, tipoExibicao) =>{
     let queue = []
 
     let goalCount = 0
@@ -89,7 +89,7 @@ bfs = (initialState, tipoExibicao) =>{
 }
 
 
-dfs = (initialState, tipoExibicao) =>{
+const dfs = (initialState, tipoExibicao) =>{
     let stack = []
 
     let goalCount = 0

@@ -2,7 +2,7 @@ let inputN = document.getElementById("inputN")
 inputN.onchange = showInitialState
 inputN.onkeyup = showInitialState
 
-createChildContainer = (parentId, childId) =>{
+const createChildContainer = (parentId, childId) =>{
     if(document.getElementById(childId) != null)
         return
 
@@ -14,7 +14,7 @@ createChildContainer = (parentId, childId) =>{
     childContainer.className += 'row'
 }
 
-getNextTableId = containerId =>{
+const getNextTableId = containerId =>{
     let tableList = document.getElementById(containerId).querySelectorAll('table')
     let new_id = 1
 
@@ -27,7 +27,7 @@ getNextTableId = containerId =>{
     return containerId+'-'+new_id;
 }
 
-createTableInContainer = containerId =>{
+const createTableInContainer = containerId =>{
     let parentContainer = document.getElementById(containerId)
     let table = document.createElement("table")
     let tableId =  getNextTableId(containerId)
@@ -37,7 +37,7 @@ createTableInContainer = containerId =>{
     return tableId
 }
 
-renderState = (state, tableId) => {
+const renderState = (state, tableId) => {
     let table = document.getElementById(tableId)
     
     if(state.isGoal)
@@ -66,24 +66,24 @@ renderState = (state, tableId) => {
     }
 }
 
-showNewState = state =>{
+const showNewState = state =>{
     createChildContainer("arvore", state.level)
     let tableId = createTableInContainer(state.level)
     renderState(state, tableId)
 }
 
-showExecutionTime = (t0, t1) =>{
+const showExecutionTime = (t0, t1) =>{
     let final = t1-t0
     final = final >= 1000 ? (final/1000).toFixed(2) + ' s' : final.toFixed(2) + ' ms'
     
     document.getElementById("infoTime").textContent = `Busca finalizada em ${final}`
 }
 
-showGoalAmount = count =>{
+const showGoalAmount = count =>{
     if(count > 1) document.getElementById("infoCont").textContent = `Quantidade de estados objetivo = ${count}`
 }
 
-showPathToObj = state =>{
+const showPathToObj = state =>{
     let stack = []
 
     while(state.parent != null){
@@ -121,7 +121,7 @@ function showInitialState(){
 
 showInitialState()
 
-startSearch = () => {
+const startSearch = () => {
     document.getElementById("buscar").setAttribute("disabled", "disabled")
 
     let tipoExibicao = document.querySelector('input[name="exibicao"]:checked').value
