@@ -37,7 +37,7 @@ const makeState = (state, i, j) =>{
 }
 
 
-const bfs = (initialState, tipoExibicao) =>{
+const bfs = (initialState, displayType) =>{
     let queue = []
 
     let goalCount = 0
@@ -50,17 +50,17 @@ const bfs = (initialState, tipoExibicao) =>{
         if(state.isGoal) goalCount++
 
         if(state.level > 0){
-            if(tipoExibicao === '1' && state.isGoal){//mostra apenas um estado objetivo
+            if(displayType === '1' && state.isGoal){//mostra apenas um estado objetivo
                 showNewState(state)
                 break
             }
-            else if(tipoExibicao === '2' && state.isGoal){//mostra todos os estados objetivos 
+            else if(displayType === '2' && state.isGoal){//mostra todos os estados objetivos 
                 showNewState(state)
             }
-            else if(tipoExibicao === '3' && state.isGoal){//mostra o caminho da raiz até o estado objetivo
+            else if(displayType === '3' && state.isGoal){//mostra o caminho da raiz até o estado objetivo
                 showPathToObj(state)
                 break
-            }else if(tipoExibicao === '4'){//mostra todos os estados
+            }else if(displayType === '4'){//mostra todos os estados
                 showNewState(state)
             }
         }            
@@ -89,7 +89,7 @@ const bfs = (initialState, tipoExibicao) =>{
 }
 
 
-const dfs = (initialState, tipoExibicao) =>{
+const dfs = (initialState, displayType) =>{
     let stack = []
 
     let goalCount = 0
@@ -102,17 +102,17 @@ const dfs = (initialState, tipoExibicao) =>{
         if(state.isGoal) goalCount++
 
         if(state.level > 0){
-            if(tipoExibicao === '1' && state.isGoal){//mostra apenas um estado objetivo
+            if(displayType === '1' && state.isGoal){//mostra apenas um estado objetivo
                 showNewState(state)
                 break
             }
-            else if(tipoExibicao === '2' && state.isGoal){//mostra todos os estados objetivos 
+            else if(displayType === '2' && state.isGoal){//mostra todos os estados objetivos 
                 showNewState(state)
             }
-            else if(tipoExibicao === '3' && state.isGoal){//mostra o caminho da raiz até o estado objetivo
+            else if(displayType === '3' && state.isGoal){//mostra o caminho da raiz até o estado objetivo
                 showPathToObj(state)
                 break
-            }else if(tipoExibicao === '4'){//mostra todos os estados
+            }else if(displayType === '4'){//mostra todos os estados
                 showNewState(state)
             }
         }            

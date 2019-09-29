@@ -124,22 +124,22 @@ showInitialState()
 const startSearch = () => {
     document.getElementById("buscar").setAttribute("disabled", "disabled")
 
-    let tipoExibicao = document.querySelector('input[name="exibicao"]:checked').value
-    let tipoBusca = document.querySelector('input[name="busca"]:checked').value
+    let displayType = document.querySelector('input[name="exibicao"]:checked').value
+    let serchType = document.querySelector('input[name="busca"]:checked').value
 
     let t0 = 0, t1 = 0, goalCount = 0
 
-    if(tipoBusca === 'dfs'){  
+    if(serchType === 'dfs'){  
         t0 = performance.now()//marca o tempo inicial
     
-        goalCount = dfs(intialState, tipoExibicao)
+        goalCount = dfs(intialState, displayType)
         
         t1 = performance.now()//marca o tempo final
     }
     else{
         t0 = performance.now()
     
-        goalCount = bfs(intialState, tipoExibicao)
+        goalCount = bfs(intialState, displayType)
         
         t1 = performance.now()
     }
