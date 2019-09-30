@@ -2,6 +2,8 @@ let inputN = document.getElementById("inputN")
 inputN.onchange = showOnlyInitialState
 inputN.onkeyup = showOnlyInitialState
 
+//função responsável por criar as divs onde vão ficar os estados
+//cada div representa um nível na árvore
 const createChildContainer = (parentId, childId) =>{
     if(document.getElementById(childId) != null)
         return
@@ -14,6 +16,7 @@ const createChildContainer = (parentId, childId) =>{
     childContainer.className += 'row'
 }
 
+//dado um id de um container, retorna qual o próximo id que deve ser dado a uma tabela q pretende ser inserida na div
 const getNextTableId = containerId =>{
     let tableList = document.getElementById(containerId).querySelectorAll('table')
     let new_id = 1
@@ -27,6 +30,7 @@ const getNextTableId = containerId =>{
     return containerId+'-'+new_id;
 }
 
+//dado o id de um container (nível na árvore) cria uma nova tabela e adiciona ela dentro desse container
 const createTableInContainer = containerId =>{
     let parentContainer = document.getElementById(containerId)
     let table = document.createElement("table")
@@ -37,6 +41,8 @@ const createTableInContainer = containerId =>{
     return tableId
 }
 
+//metodo que dado um estado do jogo e um id de uma determinada tabela insere linhas e colunas
+//de forma que a tabela agora seja a representação do estado no formato de um tabuleiro de xadrez
 const renderState = (state, tableId) => {
     let table = document.getElementById(tableId)
     
@@ -66,6 +72,7 @@ const renderState = (state, tableId) => {
     }
 }
 
+// chama os metodos necessários para exibir um estado
 const showNewState = state =>{
     createChildContainer("arvore", state.level)
     let tableId = createTableInContainer(state.level)
@@ -83,6 +90,7 @@ const showGoalAmount = count =>{
     if(count > 1) document.getElementById("infoCont").textContent = `Quantidade de estados objetivo = ${count}`
 }
 
+//exibe o caminho de um estado até a raiz da árvore
 const showPathToObj = state =>{
     let stack = []
 
@@ -99,6 +107,7 @@ const showPathToObj = state =>{
 let n
 let intialState = {}
 
+//limpa todo o conteúdo da árvore (inclusive o estado inicial)
 cleanTree = () =>{
     document.body.removeChild(document.getElementById('arvore'))
 
@@ -107,6 +116,7 @@ cleanTree = () =>{
     document.body.appendChild(tree)
 }
 
+//função que exibe apenas o estado inicial, pois esse é um caso especial no problema
 function showOnlyInitialState(){
     cleanTree()
 
@@ -131,6 +141,7 @@ function showOnlyInitialState(){
 
 showOnlyInitialState()
 
+//chama a busca correta de acordo com os parâmetros escolhidos na interface
 const startSearch = () => {
     showOnlyInitialState()
 
