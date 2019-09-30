@@ -1,6 +1,6 @@
 let inputN = document.getElementById("inputN")
-inputN.onchange = showInitialState
-inputN.onkeyup = showInitialState
+inputN.onchange = showOnlyInitialState
+inputN.onkeyup = showOnlyInitialState
 
 const createChildContainer = (parentId, childId) =>{
     if(document.getElementById(childId) != null)
@@ -99,7 +99,17 @@ const showPathToObj = state =>{
 let n
 let intialState = {}
 
-function showInitialState(){
+cleanTree = () =>{
+    document.body.removeChild(document.getElementById('arvore'))
+
+    let tree = document.createElement('div')
+    tree.setAttribute('id', 'arvore')
+    document.body.appendChild(tree)
+}
+
+function showOnlyInitialState(){
+    cleanTree()
+
     n = parseInt(inputN.value) || 0
 
     //atualiza estado incial dependendo do valor no inputN
@@ -119,10 +129,10 @@ function showInitialState(){
     renderState(intialState, tableId)
 }
 
-showInitialState()
+showOnlyInitialState()
 
 const startSearch = () => {
-    document.getElementById("buscar").setAttribute("disabled", "disabled")
+    showOnlyInitialState()
 
     let displayType = document.querySelector('input[name="exibicao"]:checked').value
     let serchType = document.querySelector('input[name="busca"]:checked').value

@@ -52,10 +52,6 @@ button:hover{
     background: rgb(128, 255, 0);
 }
 
-button :disabled, button[disabled]{
-    background: #eee;
-}
-
 table{
     margin: 20px auto;
     padding: 10px;
