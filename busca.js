@@ -102,28 +102,25 @@ const dfs = (initialState, displayType) =>{
         if(state.isGoal) goalCount++
 
         if(state.level > 0){
-            if(displayType === '1' && state.isGoal){//mostra apenas um estado objetivo
+            if(displayType === '1' && state.isGoal){
                 showNewState(state)
                 break
             }
-            else if(displayType === '2' && state.isGoal){//mostra todos os estados objetivos 
+            else if(displayType === '2' && state.isGoal){
                 showNewState(state)
             }
-            else if(displayType === '3' && state.isGoal){//mostra o caminho da raiz até o estado objetivo
+            else if(displayType === '3' && state.isGoal){
                 showPathToObj(state)
                 break
-            }else if(displayType === '4'){//mostra todos os estados
+            }else if(displayType === '4'){
                 showNewState(state)
             }
         }            
 
-        /**
-         * percorro de trás para frente para gerar o mesmo resultado da dfs recursiva
-         */
-        
-        for(let i = state.arr.length-1; i >= 0; i--){ //colunas        
+        //percorro de trás para frente para gerar o mesmo resultado da dfs recursiva
+        for(let i = state.arr.length-1; i >= 0; i--){ 
             if(state.arr[i] == null){
-                for(let j = state.arr.length-1; j >= 0; j--){ //linhas
+                for(let j = state.arr.length-1; j >= 0; j--){
                     
                     if(isValid(state.arr, i, j)){
                         let new_state = makeState(state, i, j)
